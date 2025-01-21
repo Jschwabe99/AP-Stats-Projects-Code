@@ -31,23 +31,30 @@ public class Game{
     public int getTie(){
         return tie;
     }
-
+    // this method simulates one game
     public void play(){
+        // holds the current sum of player one's dice
         int P1Sum = 0;
+        // holds the current sum of player two's dice
         int P2Sum = 0;
+    
+        // Checks the condition that the sum is not equal to 7
         while(P1Sum != 7 && P2Sum != 7){
+            // Adds one to the round count each round
             roundNum++;
+            // Resets the sum to zero
             P1Sum = 0;
             P2Sum = 0;
             
-
+            // Simulatues the rolling of i number of 6-sided dice
             for(int i = 0; i < P1DiceCount; i++){
                 P1Sum += (int)(Math.random()*P1_DICE_SIDE)+1;
             }
+            // Simulatues the rolling of i number of 4-sided dice
             for(int i = 0; i < P2DiceCount; i++){
                 P2Sum += (int)(Math.random()*P2_DICE_SIDE)+1;
             }
-            //System.out.println("Round " + roundNum + ":\n" + "Player 1 Sum: " + P1Sum + "\n" + "Player 1 Dice Count: " + P1DiceCount + "\n" + "Player 2 Sum: " + P2Sum + "\n" + "Player 2 Dice Count: " + P2DiceCount);
+           
             
             // Checks the current recored max dice count agianst the current game
             if(P1DiceCountMax<P1DiceCount){
@@ -57,14 +64,14 @@ public class Game{
                 P2DiceCountMax = P2DiceCount;
             }
 
-           //player 1 dice count logic for increasing and decresing based on odd or even
+           //player 1 dice count logic for increasing and decresing based on odd or even conditions
             if(P1Sum % 2 == 0){
                 P1DiceCount++;
             } else {
                 P1DiceCount = Math.max(P1DiceCount-1, 2);
             }
             
-            //player 2 dice count logic for increasing and decresing based on odd or even
+            //player 2 dice count logic for increasing and decresing based on odd or even conditions
             if(P2Sum % 2 == 0){
                 P2DiceCount++;
             } else {
